@@ -22,6 +22,7 @@ def new_game():
 
     display_score(correct_guess, guesses)
 
+
 # ------------------------------------
 def check_answer(answer, guess):
     if answer == guess:
@@ -48,7 +49,7 @@ def display_score(correct_guesses, guesses):
         print(i, end=" ")
     print()
 
-    score = int((correct_guesses/len(questions)) * 100)
+    score = int((correct_guesses / len(questions)) * 100)
     print("Your score is: " + str(score) + "%")
 
 
@@ -61,6 +62,7 @@ def play_again():
         return True
     else:
         return False
+
 
 # ------------------------------------
 
@@ -75,7 +77,6 @@ options = [["A. Guido", "B. Elon", "C. Bill", "D. Mark"],
            ["A. 1989", "B. 1991", "C. 2000", "D. 2016"],
            ["A. Lonely", "B. Smosh", "C. Python", "D. SNL"],
            ["A. True", "B. False", "C. sometimes", "D. What's Earth? "]]
-
 
 new_game()
 
