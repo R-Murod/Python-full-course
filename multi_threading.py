@@ -10,6 +10,9 @@
 # программа/задача тратит большую часть времени на ожидание внешних событий (ввод данных пользователем,
 # просмотр веб-страниц) использовать многопроцессорность
 
+# sequentially - последовательно
+# synchronise - синхронизировать
+
 import threading
 import time
 
@@ -29,7 +32,7 @@ def study():
     print("You finish studying")
 
 
-x = threading.Thread(target=eat_breakfast, args=())
+x = threading.Thread(target=eat_breakfast, args=()) # target - will charge with function, args() - for arguments
 x.start()
 
 y = threading.Thread(target=drink_coffee, args=())
@@ -38,10 +41,17 @@ y.start()
 z = threading.Thread(target=study, args=())
 z.start()
 
+# Main thread is charge in x, y and z of creating
 
-eat_breakfast()
-drink_coffee()
-study()
+# These threads to synchronise
+x.join()
+y.join()
+z.join()
+
+# eat_breakfast()
+# drink_coffee()
+# study()
 
 print(threading.active_count())
 print(threading.enumerate())
+print(time.perf_counter()) # will return how long it is our calling thread in our main thread
